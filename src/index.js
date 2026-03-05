@@ -29,3 +29,6 @@ app.listen(PORT, () => {
   console.log(`☕ Barista Server steaming on port http://localhost:${PORT}`);
   console.log(`☕ Barista Server steaming on port http://localhost:${PORT}/api/orders`);
 });
+
+// Export the app for Vercel
+module.exports = app;
