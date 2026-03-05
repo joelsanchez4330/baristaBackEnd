@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors({
   origin: [
-    'https://barista-front-end.vercel.app/', // Your production frontend
+    'https://barista-front-end.vercel.app', // Your production frontend
     'http://localhost:5173'            // Keep this for local development
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
