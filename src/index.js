@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors({
   origin: [
-    'https://your-frontend.vercel.app', // Your production frontend
+    'https://barista-front-end.vercel.app/', // Your production frontend
     'http://localhost:5173'            // Keep this for local development
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -36,10 +36,17 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something broke in the cafe!' });
 });
 
-app.listen(PORT, () => {
-  console.log(`☕ Barista Server steaming on port http://localhost:${PORT}`);
-  console.log(`☕ Barista Server steaming on port http://localhost:${PORT}/api/orders`);
-});
+// app.listen(PORT, () => {
+//   console.log(`☕ Barista Server steaming on port http://localhost:${PORT}`);
+//   console.log(`☕ Barista Server steaming on port http://localhost:${PORT}/api/orders`);
+// });
+
+// ONLY run app.listen if we are NOT on Vercel
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`☕ Barista Server steaming on port http://localhost:${PORT}`);
+  });
+}
 
 // Export the app for Vercel
 module.exports = app;
